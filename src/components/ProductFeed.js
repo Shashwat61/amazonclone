@@ -2,7 +2,7 @@ import React from 'react'
 import Product from './Product'
 
 function ProductFeed({products}) {
-    console.log(products)
+   
     return (
         <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-col-3 xl:grid-cols-4 md:-mt-20 mx-auto">
            {products.slice(0,4)
