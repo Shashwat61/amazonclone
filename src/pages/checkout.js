@@ -9,8 +9,8 @@ import { selectItems, selectTotal } from '../slices/basketSlice'
 import { useSession } from 'next-auth/client'
 
 function Checkout() {
-  const session=useSession();
-  console.log(session.[0].user)
+  const [session]=useSession();
+  console.log(session) 
   const items=useSelector(selectItems)
   const total=useSelector(selectTotal)
     return (
@@ -51,9 +51,9 @@ function Checkout() {
                  </span>
                  </h2>
                  <button 
-                 disabled={!session[0].user}
-                 className={`button mt-2 ${!session[0].user && 'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed'}`}>
-                   {!session[0].user ? "sign in to checkout" : "proceed to checkout"}
+                 disabled={!session}
+                 className={`button mt-2 ${!session && 'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed'}`}>
+                   {!session ? "sign in to checkout" : " proceed to checkout"}
                  </button>
                  </>
                )}
