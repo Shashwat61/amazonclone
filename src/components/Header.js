@@ -1,7 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import { signIn, signOut, useSession } from 'next-auth/client'
 import {MenuIcon,SearchIcon,ShoppingCartIcon} from "@heroicons/react/outline"
 function Header() {
+    const [session]=useSession();
+    
     return (
         <header>
             {/* top nav */}
@@ -25,8 +28,8 @@ function Header() {
                 </div>
                 {/* right */}
                 <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-                    <div  className="link">
-                        <p>Hello shash</p>
+                    <div onClick={!session ? signIn : signOut} className="link">
+                        <p>{session ? `Hello, ${session.user.name}` : 'Sign In'}</p>
                         <p className="font-extrabold md:text-sm">Account and List</p>
                     </div>
                     <div className="link">
